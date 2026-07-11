@@ -194,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!p) return;
       const card = document.createElement('article');
       card.className = 'repo-card' + (p.award ? ' repo-featured' : '');
+      card.setAttribute('data-cur', '');
+      card.setAttribute('data-cur-label', 'Open');
       card.innerHTML = `
         <div class="repo-top">
           <div class="repo-name-row">
@@ -206,8 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="repo-desc">${p.overview}</p>
         <div class="repo-lang-row">${p.tech.map(t => `<span class="lang-dot" style="background:var(--gold)"></span>${t}`).join(' &nbsp; ')}</div>
         <div class="repo-actions">
-          <button class="repo-btn repo-btn-primary case-btn" type="button" data-project="${key}">Open case file →</button>
+          <button class="repo-btn repo-btn-primary case-btn" type="button" data-project="${key}" data-cur>Open file →</button>
         </div>`;
+      card.addEventListener('click', () => openProjectModal(key));
       projectsGrid.appendChild(card);
       card.classList.add('reveal');
     });
@@ -323,5 +326,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
     typePromptLine();
   }
+
+  /* =========================================================
+     ADVANCED CUSTOM CURSOR
+     - dot follows the pointer exactly
+     - ring trails smoothly behind it
+     - any [data-cur] element grows the ring (and shows a label if
+       data-cur-label is set); anything else makes it pulse softly
+     - [data-magnetic] elements pull slightly toward the pointer
+     - disabled automatically on touch/coarse-pointer devices
+  ========================================================= */
+  (function initCustomCursor() {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) return;
+
+    document.body.classList.add('has-cursor');
+    const dot = document.getElementById('curDot');
+    const ring = document.getElementById('curRing');
+    const label = document.getElementById('curLabel');
+    if (!dot || !ring) return;
+
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let rx = mx, ry = my;
+    let visible = false;
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px)`;
+      if (!visible) {
+        visible = true;
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+    });
+
+    (function ringLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(ringLoop);
+    })();
+
+    // Grow / label on any [data-cur] target. Re-scanned on a short
+    // interval so dynamically-added cards (projects grid) get bound too.
+    const bound = new WeakSet();
+    function bindCursorTargets() {
+      document.querySelectorAll('[data-cur]').forEach((el) => {
+        if (bound.has(el)) return;
+        bound.add(el);
+        el.addEventListener('mouseenter', () => {
+          const txt = el.getAttribute('data-cur-label');
+          if (txt) {
+            ring.classList.add('grow');
+            label.textContent = txt;
+          } else {
+            ring.classList.add('pulse');
+          }
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.classList.remove('grow', 'pulse');
+          label.textContent = '';
+        });
+      });
+    }
+    bindCursorTargets();
+    const cursorRescan = setInterval(bindCursorTargets, 800);
+    setTimeout(() => clearInterval(cursorRescan), 8000);
+
+    // Magnetic pull for [data-magnetic] buttons
+    document.querySelectorAll('[data-magnetic]').forEach((btn) => {
+      const inner = btn.querySelector('.btn-inner') || btn;
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const relX = e.clientX - (r.left + r.width / 2);
+        const relY = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = `translate(${relX * 0.16}px, ${relY * 0.3}px)`;
+        inner.style.transform = `translate(${relX * 0.1}px, ${relY * 0.22}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0,0)';
+        inner.style.transform = 'translate(0,0)';
+      });
+    });
+  })();
 
 });
