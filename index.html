@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abishek K — Full Stack Developer</title>
+<meta name="description" content="Abishek K — Full Stack Developer specializing in React, Node.js, MongoDB, and applied AI/ML. Building production-ready software." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">abishek<span class="dot">.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#stack" class="nav-link">Stack</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-progress" id="navProgress"></div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#stack">Stack</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="eyebrow mono">FULL STACK DEVELOPER · AI &amp; DATA SCIENCE</p>
+      <h1 class="hero-name">ABISHEK K</h1>
+      <p class="hero-role">Software Engineer — Backend &amp; AI Enthusiast</p>
+      <p class="hero-tagline">I build scalable web applications that transform ideas into production-ready software.</p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="Abishek_K_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
+      </div>
+
+      <div class="hero-social">
+        <a href="https://github.com/abijerey" target="_blank" rel="noopener" class="social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A11.53 11.53 0 0 0 23.5 12.03C23.5 5.66 18.35.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/abishek-jeremiah-k-298a47291/" target="_blank" rel="noopener" class="social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="editor-window">
+        <div class="editor-titlebar">
+          <span class="dot-group"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+          <span class="editor-filename mono">envirosense.js</span>
+        </div>
+        <pre class="editor-body mono" id="typingCode"></pre>
+      </div>
+      <div class="editor-caption mono">// building things that hold up in production</div>
+    </div>
+  </div>
+  <div class="scroll-cue mono">scroll</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <p class="eyebrow mono">// about</p>
+    <h2 class="section-title">Profile</h2>
+
+    <div class="about-grid">
+      <div class="about-photo-card">
+        <img src="images/abishek.png" alt="Abishek K" class="about-photo" />
+        <div class="status-pill"><span class="pulse"></span> Available for opportunities</div>
+      </div>
+
+      <div class="dashboard-cards">
+        <div class="dash-card">
+          <p class="dash-label mono">SUMMARY</p>
+          <p class="dash-value-text">Full Stack Developer and B.Tech (AI &amp; Data Science) undergraduate building end-to-end web applications with React, Node.js, REST APIs, and MongoDB — integrating AI/ML capabilities into scalable, production-shaped architectures.</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">EDUCATION</p>
+          <p class="dash-value">B.Tech — Artificial Intelligence &amp; Data Science</p>
+          <p class="dash-sub">Sri Sairam Engineering College, Chennai · 2023 – 2027</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">CURRENT FOCUS</p>
+          <p class="dash-value">Full-stack systems + applied ML</p>
+          <p class="dash-sub">React/Node architectures with real-time data and model-serving APIs</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">SPECIALIZATION</p>
+          <p class="dash-value">React · Node.js · MongoDB · TensorFlow</p>
+          <p class="dash-sub">REST API design, IoT integration, real-time dashboards</p>
+        </div>
+        <div class="dash-card dash-card-wide">
+          <p class="dash-label mono">AVAILABILITY</p>
+          <div class="avail-row">
+            <span class="badge badge-green">Open to Full Stack roles</span>
+            <span class="badge badge-gold">Open to AI/ML collaboration</span>
+            <span class="badge badge-outline">Chennai, India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num" data-target="4">0</span>
+      <span class="stat-label mono">Projects Shipped</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="1">0</span>
+      <span class="stat-label mono">Internship</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="2">0</span>
+      <span class="stat-label mono">Awards Won</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="10">0</span>
+      <span class="stat-label mono">Endpoints Built (Envirosense)</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="87">0</span>
+      <span class="stat-label mono">% Detection Accuracy</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECH STACK ================= -->
+<section class="section" id="stack">
+  <div class="section-inner">
+    <p class="eyebrow mono">// stack</p>
+    <h2 class="section-title">Tech Stack</h2>
+
+    <div class="stack-grid">
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Frontend</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">React.js</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">JavaScript (ES6+)</span>
+          <span class="skill-pill">Responsive UI</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Backend</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Express.js</span>
+          <span class="skill-pill">REST API Design</span>
+          <span class="skill-pill">Python (Flask)</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Database</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">MySQL</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">AI / ML</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">OpenCV</span>
+          <span class="skill-pill">Machine Learning</span>
+          <span class="skill-pill">Data Augmentation</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">IoT</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Arduino</span>
+          <span class="skill-pill">Blynk IoT</span>
+          <span class="skill-pill">Embedded Systems</span>
+          <span class="skill-pill">GSM Modules</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Tools &amp; DevOps</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">Postman</span>
+          <span class="skill-pill">Tkinter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <p class="eyebrow mono">// repository workspace</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Selected work — presented as it lives on GitHub.</p>
+
+    <div class="repo-grid">
+
+      <!-- PROJECT 1 -->
+      <article class="repo-card repo-featured">
+        <div class="repo-top">
+          <div class="repo-name-row">
+            <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2H4.5a1 1 0 0 0-.98 1.19c.15.03.3.06.48.06H12a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 11.5v-9Zm10.5-1H4.5a1 1 0 0 0-1 1V10a2.5 2.5 0 0 1 1-.208h8V1.5Z"/></svg>
+            <h3 class="repo-name">Envirosense</h3>
+            <span class="repo-visibility mono">public</span>
+          </div>
+          <span class="status-tag status-tag-award">🏆 Award Winner</span>
+        </div>
+        <p class="repo-desc">Full-stack IoT environmental dashboard visualizing real-time pollution data — TDS, turbidity, and temperature — across 3 industrial monitoring zones, with automated SMS alerts on threshold breach.</p>
+
+        <ul class="repo-features">
+          <li>6 REST API endpoints ingesting Arduino sensor readings into MongoDB, triggering automated alerts on threshold breach</li>
+          <li>GSM-based notifications dispatching SMS alerts to environmental officers within 5 seconds of a violation</li>
+          <li>Cloud-hosted analytics dashboard with historical trend graphs and exportable compliance reports</li>
+          <li>Reduced manual inspection rounds by ~40% for monitoring officers</li>
+        </ul>
+
+        <div class="repo-lang-row">
+          <span class="lang-dot" style="background:#61dafb"></span>React.js
+          <span class="lang-dot" style="background:#3c873a"></span>Node.js / Express
+          <span class="lang-dot" style="background:#4db33d"></span>MongoDB
+          <span class="lang-dot" style="background:#D4AF37"></span>Arduino / GSM
+        </div>
+
+        <div class="repo-actions">
+          <a href="#" class="repo-btn">Repository</a>
+          <a href="#" class="repo-btn repo-btn-primary">Live Demo</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="repo-card">
+        <div class="repo-top">
+          <div class="repo-name-row">
+            <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2H4.5a1 1 0 0 0-.98 1.19c.15.03.3.06.48.06H12a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 11.5v-9Zm10.5-1H4.5a1 1 0 0 0-1 1V10a2.5 2.5 0 0 1 1-.208h8V1.5Z"/></svg>
+            <h3 class="repo-name">Real-Time Object Detection Web</h3>
+            <span class="repo-visibility mono">public</span>
+          </div>
+        </div>
+        <p class="repo-desc">React frontend streaming webcam frames to a Python Flask backend, where a custom-trained TensorFlow + OpenCV pipeline returns annotated detections in under 200ms.</p>
+
+        <ul class="repo-features">
+          <li>Custom TensorFlow model trained on a 2,000-image dataset, reaching 87% detection accuracy via data augmentation</li>
+          <li>TensorFlow Lite conversion + batch preprocessing cut inference time by 35%</li>
+          <li>Predictions exposed as a JSON API — reusable as a standalone microservice</li>
+        </ul>
+
+        <div class="repo-lang-row">
+          <span class="lang-dot" style="background:#61dafb"></span>React
+          <span class="lang-dot" style="background:#3776ab"></span>Flask
+          <span class="lang-dot" style="background:#ff6f00"></span>TensorFlow
+          <span class="lang-dot" style="background:#5C3EE8"></span>OpenCV
+        </div>
+
+        <div class="repo-actions">
+          <a href="#" class="repo-btn">Repository</a>
+          <a href="#" class="repo-btn repo-btn-primary">Live Demo</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 3 -->
+      <article class="repo-card">
+        <div class="repo-top">
+          <div class="repo-name-row">
+            <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2H4.5a1 1 0 0 0-.98 1.19c.15.03.3.06.48.06H12a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 11.5v-9Zm10.5-1H4.5a1 1 0 0 0-1 1V10a2.5 2.5 0 0 1 1-.208h8V1.5Z"/></svg>
+            <h3 class="repo-name">Quiz Platform</h3>
+            <span class="repo-visibility mono">public</span>
+          </div>
+        </div>
+        <p class="repo-desc">Interactive full-stack quiz application supporting 50+ concurrent users with real-time score tracking, dynamic question rendering, and an instructor admin panel.</p>
+
+        <ul class="repo-features">
+          <li>MongoDB schema for question banks, sessions, and leaderboard data with full CRUD endpoints</li>
+          <li>Event-driven UI + optimistic state updates cut perceived latency 40% vs. the original Tkinter prototype</li>
+          <li>Admin panel for question management, cutting instructor setup time by 60%</li>
+        </ul>
+
+        <div class="repo-lang-row">
+          <span class="lang-dot" style="background:#61dafb"></span>React
+          <span class="lang-dot" style="background:#3c873a"></span>Node.js / Express
+          <span class="lang-dot" style="background:#4db33d"></span>MongoDB
+        </div>
+
+        <div class="repo-actions">
+          <a href="#" class="repo-btn">Repository</a>
+          <a href="#" class="repo-btn repo-btn-primary">Live Demo</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 4 -->
+      <article class="repo-card">
+        <div class="repo-top">
+          <div class="repo-name-row">
+            <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2H4.5a1 1 0 0 0-.98 1.19c.15.03.3.06.48.06H12a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 11.5v-9Zm10.5-1H4.5a1 1 0 0 0-1 1V10a2.5 2.5 0 0 1 1-.208h8V1.5Z"/></svg>
+            <h3 class="repo-name">Real-Time Chat Application</h3>
+            <span class="repo-visibility mono">public</span>
+          </div>
+        </div>
+        <p class="repo-desc">Live messaging platform with instant delivery, authentication, and dynamic UI updates powered by WebSockets.</p>
+
+        <ul class="repo-features">
+          <li>Real-time bidirectional messaging with persistent chat history</li>
+          <li>Authenticated sessions and dynamic, reactive UI updates on new messages</li>
+        </ul>
+
+        <div class="repo-lang-row">
+          <span class="lang-dot" style="background:#f0db4f"></span>JavaScript
+          <span class="lang-dot" style="background:#000000; border:1px solid #444"></span>Next.js
+          <span class="lang-dot" style="background:#3c873a"></span>Node.js
+          <span class="lang-dot" style="background:#D4AF37"></span>WebSockets
+        </div>
+
+        <div class="repo-actions">
+          <a href="https://github.com/abijerey/RealtimeChatApp" target="_blank" rel="noopener" class="repo-btn">Repository</a>
+          <a href="#" class="repo-btn repo-btn-primary">Live Demo</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE (git commit timeline) ================= -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <p class="eyebrow mono">// git log --oneline</p>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="commit-timeline">
+      <div class="commit-node">
+        <div class="commit-graph"><span class="commit-dot"></span><span class="commit-line"></span></div>
+        <div class="commit-content">
+          <p class="commit-hash mono">commit a1f9c2e</p>
+          <h3 class="commit-title">Full Stack Developer Intern</h3>
+          <p class="commit-meta mono">Jun 2024 – Aug 2024</p>
+          <ul class="commit-body">
+            <li>Developed and deployed 3+ responsive web modules using React.js and Node.js/Express, cutting page load time by ~30% through code splitting and lazy loading</li>
+            <li>Designed and integrated 10+ REST API endpoints connecting the frontend to a MongoDB backend for real-time dashboard sync</li>
+            <li>Implemented JWT-based auth and role-based access control, securing data access for 200+ simulated users</li>
+            <li>Collaborated in a 4-member agile team — daily stand-ups, biweekly sprint reviews</li>
+            <li>Wrote unit tests and ran API validation in Postman, reducing production bugs by ~25%</li>
+          </ul>
+          <div class="commit-tags">
+            <span class="commit-tag">React.js</span>
+            <span class="commit-tag">Node.js</span>
+            <span class="commit-tag">Express</span>
+            <span class="commit-tag">MongoDB</span>
+            <span class="commit-tag">JWT</span>
+            <span class="commit-tag">Postman</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section class="section" id="education">
+  <div class="section-inner">
+    <p class="eyebrow mono">// education</p>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-card">
+      <div class="edu-main">
+        <h3 class="edu-degree">B.Tech — Artificial Intelligence &amp; Data Science</h3>
+        <p class="edu-college">Sri Sairam Engineering College, Chennai</p>
+      </div>
+      <div class="edu-duration mono">2023 — 2027</div>
+      <div class="edu-details">
+        <div class="edu-block">
+          <p class="dash-label mono">COURSEWORK</p>
+          <div class="skill-pills">
+            <span class="skill-pill">Data Structures</span>
+            <span class="skill-pill">DBMS</span>
+            <span class="skill-pill">Machine Learning</span>
+            <span class="skill-pill">Web Technologies</span>
+            <span class="skill-pill">Cloud Computing</span>
+          </div>
+        </div>
+        <div class="edu-block">
+          <p class="dash-label mono">ACTIVITIES</p>
+          <p class="dash-value-text">Active participant in inter-college technical symposiums and project exhibitions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section class="section" id="achievements">
+  <div class="section-inner">
+    <p class="eyebrow mono">// achievements</p>
+    <h2 class="section-title">Achievements &amp; Certifications</h2>
+
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <h3 class="award-title">1st Prize — Project Presentation</h3>
+        <p class="award-sub">Envirosense · CIT Symposium (2024)</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <h3 class="award-title">3rd Prize (Overall)</h3>
+        <p class="award-sub">Industry Emission Management Project Exhibition · Sri Sairam Engineering College (2024)</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">📜</div>
+        <h3 class="award-title">Certifications</h3>
+        <p class="award-sub">React.js · REST API Design · MongoDB — self-paced professional modules</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT (terminal) ================= -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <p class="eyebrow mono">// contact</p>
+    <h2 class="section-title">Let's build something</h2>
+    <p class="section-sub">Open to Full Stack Development roles and collaborative engineering work.</p>
+
+    <div class="terminal-window">
+      <div class="editor-titlebar">
+        <span class="dot-group"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+        <span class="editor-filename mono">abishek@portfolio:~</span>
+      </div>
+      <div class="terminal-body mono" id="terminalBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-status">
+      <span class="badge badge-green"><span class="pulse"></span> Available for Full Stack Development Roles</span>
+      <span class="badge badge-gold">Building Production Applications</span>
+      <span class="badge badge-outline">Open to Collaboration</span>
+    </div>
+    <p class="footer-copy mono">© 2026 Abishek K — Chennai, India</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
