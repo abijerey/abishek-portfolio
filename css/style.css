@@ -47,6 +47,13 @@ body{
   overflow-x:hidden;
   cursor:auto;
 }
+/* Native pointer is hidden only once the JS custom cursor is confirmed
+   running (has-cursor class) — touch devices never get this class, so
+   the real pointer/finger always stays visible there. */
+body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor input,
+body.has-cursor .repo-card, body.has-cursor .skill-pill{
+  cursor:none;
+}
 
 .mono{ font-family:var(--font-mono); }
 
@@ -61,6 +68,44 @@ img{ max-width:100%; display:block; }
   outline-offset:3px;
   border-radius:4px;
 }
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+.cur-dot, .cur-ring{
+  position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+  will-change:transform; opacity:0; transition:opacity .25s ease;
+}
+.cur-dot{
+  width:6px; height:6px; margin:-3px 0 0 -3px;
+  background:var(--gold); border-radius:50%;
+}
+.cur-ring{
+  width:32px; height:32px; margin:-16px 0 0 -16px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.35);
+  display:flex; align-items:center; justify-content:center;
+  transition:width .3s cubic-bezier(.16,1,.3,1), height .3s cubic-bezier(.16,1,.3,1),
+             margin .3s cubic-bezier(.16,1,.3,1), background-color .3s ease,
+             border-color .3s ease, opacity .25s ease;
+}
+.cur-ring span{
+  font-family:var(--font-mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--pure-white); opacity:0; transition:opacity .2s ease; white-space:nowrap;
+}
+.cur-ring.grow{
+  width:60px; height:60px; margin:-30px 0 0 -30px;
+  background:var(--gold); border-color:var(--gold);
+}
+.cur-ring.grow span{ opacity:1; }
+.cur-ring.pulse{
+  width:46px; height:46px; margin:-23px 0 0 -23px;
+  background:rgba(228,48,59,.14); border-color:var(--gold);
+}
+/* only rendered once JS confirms a non-touch pointer is active */
+body:not(.has-cursor) .cur-dot, body:not(.has-cursor) .cur-ring{ display:none; }
+
+/* lets magnetic buttons move their label independently of the button shell */
+.btn-inner{ display:inline-flex; align-items:center; gap:8px; transition:transform .25s ease; }
 
 /* =========================================================
    NAVBAR
@@ -121,6 +166,8 @@ img{ max-width:100%; display:block; }
   .nav-links, .nav-cta{ display:none; }
   .nav-burger{ display:flex; }
   .mobile-menu{ display:flex; }
+  body.has-cursor, body.has-cursor a, body.has-cursor button{ cursor:auto; }
+  .cur-dot, .cur-ring{ display:none; }
 }
 
 /* =========================================================
