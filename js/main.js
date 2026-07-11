@@ -1,327 +1,248 @@
+// ================= PROJECT / CASE FILE DATA =================
+// NOTE: Envirosense, Real-Time Object Detection Web, Quiz Platform, and
+// Real-Time Chat Application (RealtimeChatApp) use Abishek's real project
+// details. The remaining 8 (GestureVerse, MediLedger, StudentManagementSystem,
+// TicTacToeAI, SecureDocVerifier, ResumeAnalyzer, NewsChatBot, QuickLink) were
+// only supplied as a repo name + language, so their descriptions below are
+// inferred and should be reviewed/edited for accuracy before publishing.
+const projectsData = {
+  envirosense:{ title:'Envirosense', objective:'IoT Environmental Monitoring & Alert System',
+    tech:['React.js','Node.js','Express','MongoDB','Arduino','GSM'],
+    overview:'Full-stack IoT environmental dashboard visualizing real-time pollution data — TDS, turbidity, and temperature — across 3 industrial monitoring zones, with automated SMS alerts on threshold breach. Award-winning project.',
+    features:['6 REST API endpoints ingesting Arduino sensor readings into MongoDB','Automated alert triggers on threshold breach','GSM-based SMS notifications to environmental officers within 5 seconds of a violation','Cloud-hosted analytics dashboard with historical trend graphs','Exportable compliance reports for regulatory review'],
+    technical:['Arduino sensor nodes streaming TDS, turbidity, and temperature readings','Node.js / Express REST API layer for ingestion and alerting','MongoDB for time-series sensor storage','GSM module integration for SMS dispatch','React.js dashboard for real-time and historical visualization'],
+    impact:[{value:'6',label:'API Endpoints'},{value:'<5 Sec',label:'Alert Dispatch Time'},{value:'3',label:'Monitoring Zones'},{value:'~40%',label:'Fewer Manual Inspections'}] },
+  objectdetection:{ title:'Real-Time Object Detection Web', objective:'Browser-Based Object Detection Pipeline',
+    tech:['React','Flask','TensorFlow','OpenCV'],
+    overview:'React frontend streaming webcam frames to a Python Flask backend, where a custom-trained TensorFlow + OpenCV pipeline returns annotated detections in under 200ms.',
+    features:['Live webcam frame streaming from browser to backend','Custom TensorFlow model trained on a 2,000-image dataset','Data augmentation used to push detection accuracy to 87%','Predictions exposed as a reusable JSON API'],
+    technical:['TensorFlow model training with augmentation pipeline','TensorFlow Lite conversion for faster inference','OpenCV for frame preprocessing and annotation','Flask backend serving predictions as a microservice','React frontend for capture and live display'],
+    impact:[{value:'87%',label:'Detection Accuracy'},{value:'<200ms',label:'Inference Latency'},{value:'35%',label:'Faster via TFLite'},{value:'2,000',label:'Image Training Set'}] },
+  quizplatform:{ title:'Quiz Platform', objective:'Real-Time Quiz & Assessment Platform',
+    tech:['React','Node.js','Express','MongoDB'],
+    overview:'Interactive full-stack quiz application supporting 50+ concurrent users with real-time score tracking, dynamic question rendering, and an instructor admin panel.',
+    features:['Real-time score tracking and leaderboard','Dynamic question rendering per session','Instructor admin panel for question management','Full CRUD endpoints for question banks and sessions'],
+    technical:['MongoDB schema for question banks, sessions, and leaderboards','Event-driven UI with optimistic state updates','Express REST API for session and score management'],
+    impact:[{value:'50+',label:'Concurrent Users'},{value:'40%',label:'Lower Perceived Latency'},{value:'60%',label:'Faster Instructor Setup'}] },
+  realtimechat:{ title:'Real-Time Chat Application', objective:'Live Messaging Platform',
+    tech:['JavaScript','Next.js','Node.js','WebSockets'],
+    overview:'Live messaging platform with instant delivery, authentication, and dynamic UI updates powered by WebSockets.',
+    features:['Real-time bidirectional messaging with persistent chat history','Authenticated sessions','Dynamic, reactive UI updates on new messages'],
+    technical:['WebSocket-based real-time communication layer','Next.js frontend with component-based chat interface','Node.js backend handling connections and message routing'],
+    impact:[{value:'<1s',label:'Message Latency'},{value:'Live',label:'Real-Time Sync'},{value:'100%',label:'Responsive UI'}] },
+  gestureverse:{ title:'GestureVerse', objective:'Gesture-Driven Interaction Engine',
+    tech:['Python','OpenCV','Computer Vision'],
+    overview:'A hand-gesture recognition system that maps webcam-tracked gestures to real-time visual/interaction effects, built around a Python + OpenCV pipeline.',
+    features:['Real-time hand tracking via webcam','Gesture-to-action mapping for on-screen effects','Lightweight, dependency-light Python runtime'],
+    technical:['OpenCV-based frame capture and hand landmark detection','Gesture classification logic mapped to interaction events'],
+    impact:[{value:'Real-Time',label:'Gesture Tracking'},{value:'Python',label:'CV Pipeline'}] },
+  mediledger:{ title:'MediLedger', objective:'Pharma Supply Chain Ledger (Prototype)',
+    tech:['JavaScript','Node.js','Solidity'],
+    overview:'A prototype exploring blockchain-based tracking for pharmaceutical supply chains — logging custody transfers on-chain to make tampering and counterfeit insertion easier to detect.',
+    features:['Ledger entries for each custody transfer in the supply chain','Smart-contract-based verification logic','Node.js service layer connecting the frontend to the chain'],
+    technical:['Solidity smart contracts for on-chain record-keeping','Node.js backend for API and contract interaction'],
+    impact:[{value:'On-Chain',label:'Custody Records'},{value:'Prototype',label:'Project Stage'}] },
+  studentmanagement:{ title:'Student Management System', objective:'Student Records & Administration Portal',
+    tech:['JavaScript','Node.js','MongoDB'],
+    overview:'A CRUD-based portal for managing student records — enrollment details, academic data, and administrative workflows in one place.',
+    features:['Add / edit / remove student records','Search and filter by student attributes','Role-based views for admin vs. staff'],
+    technical:['MongoDB schema for student and course data','Express REST API for CRUD operations','React or vanilla JS frontend for record management'],
+    impact:[{value:'CRUD',label:'Full Record Lifecycle'},{value:'Role-Based',label:'Access Views'}] },
+  tictactoeai:{ title:'TicTacToeAI', objective:'Tic-Tac-Toe with Unbeatable AI',
+    tech:['JavaScript','Minimax Algorithm'],
+    overview:'A browser-based Tic-Tac-Toe game with an AI opponent driven by the minimax algorithm — built as a hands-on exercise in game-tree search.',
+    features:['Player vs. AI gameplay','Minimax-based move evaluation for optimal play','Clean, responsive game board UI'],
+    technical:['Minimax algorithm with game-tree traversal','Vanilla JavaScript game state management'],
+    impact:[{value:'Unbeatable',label:'AI Opponent'},{value:'Minimax',label:'Core Algorithm'}] },
+  securedocverifier:{ title:'SecureDocVerifier', objective:'AI-Assisted Document Authentication',
+    tech:['Python','OCR','Tamper Detection'],
+    overview:'A document verification tool that inspects uploaded documents for signs of tampering or forgery using OCR-based text extraction and image analysis.',
+    features:['OCR-based text extraction from documents','Tamper/forgery artifact detection','Verification result reporting'],
+    technical:['Python OCR pipeline for text extraction','Image analysis for tamper-artifact detection'],
+    impact:[{value:'AI-Assisted',label:'Verification'},{value:'OCR',label:'Text Extraction'}] },
+  resumeanalyzer:{ title:'ResumeAnalyzer', objective:'AI-Powered Resume Screening',
+    tech:['Python','NLP','Machine Learning'],
+    overview:'An NLP-driven tool that parses resumes and job descriptions to compute match scores and highlight skill gaps for faster candidate screening.',
+    features:['Resume parsing and structured data extraction','Job description keyword and skill extraction','Match scoring between resume and job description'],
+    technical:['NLP preprocessing pipeline for text cleaning','Keyword/semantic matching for scoring','Python backend for parsing and scoring logic'],
+    impact:[{value:'NLP',label:'Resume Parsing'},{value:'Automated',label:'Match Scoring'}] },
+  newschatbot:{ title:'NewsChatBot', objective:'Conversational News Aggregator',
+    tech:['TypeScript','Chatbot','News APIs'],
+    overview:'A conversational bot that retrieves and summarizes news on request, letting users ask for topics or categories instead of browsing manually.',
+    features:['Conversational query interface for news topics','Aggregation from news sources/APIs','Basic summarization of retrieved articles'],
+    technical:['TypeScript backend handling query intent and aggregation','Integration with a news data source/API'],
+    impact:[{value:'Conversational',label:'News Retrieval'},{value:'TypeScript',label:'Backend'}] },
+  quicklink:{ title:'QuickLink', objective:'Lightweight URL Shortening Service',
+    tech:['Python','REST API'],
+    overview:'A lightweight URL shortener that generates short, shareable links and redirects users to the original destination.',
+    features:['Short URL generation with unique codes','Fast redirect handling','Simple REST API for link creation'],
+    technical:['Python backend for URL generation and redirect logic','Lightweight storage for URL mappings'],
+    impact:[{value:'Fast',label:'Redirects'},{value:'REST',label:'API-Driven'}] },
+};
+const orderedProjects = ['envirosense','objectdetection','quizplatform','realtimechat','gestureverse','mediledger','studentmanagement','tictactoeai','securedocverifier','resumeanalyzer','newschatbot','quicklink'];
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* =========================================================
-     NAV: scroll progress + mobile menu
-  ========================================================= */
-  const navProgress = document.getElementById('navProgress');
-  const navBurger = document.getElementById('navBurger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    navProgress.style.width = pct + '%';
+  /* ================= RENDER PROJECT CARDS ================= */
+  const expGrid = document.getElementById('expGrid');
+  orderedProjects.forEach((key,i)=>{
+    const p = projectsData[key]; if(!p) return;
+    const card = document.createElement('div');
+    card.className = 'exp-card';
+    card.setAttribute('data-cur',''); card.setAttribute('data-cur-label','Open');
+    card.onclick = ()=>openProjectModal(key);
+    card.addEventListener('mousemove',(e)=>{ const r=card.getBoundingClientRect(); card.style.setProperty('--sx',(e.clientX-r.left)+'px'); card.style.setProperty('--sy',(e.clientY-r.top)+'px'); });
+    card.innerHTML = `
+      <div class="exp-num">EXP-${String(i+1).padStart(2,'0')}</div>
+      <h3 class="exp-title">${p.title}</h3>
+      <div class="exp-objective">${p.objective}</div>
+      <p class="exp-problem">${p.overview.slice(0,120)}${p.overview.length>120?'…':''}</p>
+      <div class="exp-tags">${p.tech.slice(0,5).map(t=>`<span class="exp-tag">${t}</span>`).join('')}</div>
+      <button class="exp-open">Open case file →</button>`;
+    expGrid.appendChild(card);
   });
 
-  navBurger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
-
-  /* Active link highlight on scroll */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const highlightObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.style.color = link.getAttribute('href') === '#' + id ? 'var(--gold)' : '';
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -50% 0px' });
-  sections.forEach(s => highlightObserver.observe(s));
-
-  /* =========================================================
-     SCROLL REVEAL for cards/sections
-  ========================================================= */
-  const revealTargets = document.querySelectorAll(
-    '.dash-card, .stack-cat, .repo-card, .commit-node, .award-card, .edu-card'
-  );
-  revealTargets.forEach(el => el.classList.add('reveal'));
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealTargets.forEach(el => revealObserver.observe(el));
-
-  /* =========================================================
-     ANIMATED STAT COUNTERS
-  ========================================================= */
-  const statNums = document.querySelectorAll('.stat-num');
-  const animateCount = (el) => {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 1400;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    };
-    requestAnimationFrame(step);
-  };
-  const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCount(entry.target);
-        statObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  statNums.forEach(el => statObserver.observe(el));
-
-  /* =========================================================
-     PROJECT DATA — used to build cards + the case-file modal
-  ========================================================= */
-  const repoIconSvg = '<svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2H4.5a1 1 0 0 0-.98 1.19c.15.03.3.06.48.06H12a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 11.5v-9Zm10.5-1H4.5a1 1 0 0 0-1 1V10a2.5 2.5 0 0 1 1-.208h8V1.5Z"/></svg>';
-
-  const projectsData = {
-    envirosense: {
-      title: 'Envirosense', objective: 'IoT Environmental Pollution Monitoring & Alert System', award: true,
-      tech: ['React.js', 'Node.js', 'Express', 'MongoDB', 'Arduino', 'GSM'],
-      overview: 'Full-stack IoT environmental dashboard visualizing real-time pollution data — TDS, turbidity, and temperature — across 3 industrial monitoring zones, with automated SMS alerts on threshold breach.',
-      features: ['6 REST API endpoints ingesting Arduino sensor readings into MongoDB, triggering automated alerts on threshold breach', 'GSM-based notifications dispatching SMS alerts to environmental officers within 5 seconds of a violation', 'Cloud-hosted analytics dashboard with historical trend graphs and exportable compliance reports', 'Reduced manual inspection rounds by ~40% for monitoring officers'],
-      technical: ['React.js frontend with real-time chart rendering', 'Node.js / Express REST API layer', 'MongoDB schema for sensor readings and alert logs', 'Arduino + GSM module integration for field sensors'],
-      impact: [{ value: '6', label: 'API Endpoints' }, { value: '<5s', label: 'Alert Dispatch Time' }, { value: '40%', label: 'Fewer Manual Inspections' }, { value: '3', label: 'Monitoring Zones' }]
-    },
-    objectdetection: {
-      title: 'Real-Time Object Detection Web', objective: 'Computer Vision Detection Pipeline',
-      tech: ['React', 'Flask', 'TensorFlow', 'OpenCV'],
-      overview: 'React frontend streaming webcam frames to a Python Flask backend, where a custom-trained TensorFlow + OpenCV pipeline returns annotated detections in under 200ms.',
-      features: ['Custom TensorFlow model trained on a 2,000-image dataset, reaching 87% detection accuracy via data augmentation', 'TensorFlow Lite conversion + batch preprocessing cut inference time by 35%', 'Predictions exposed as a JSON API — reusable as a standalone microservice', 'Live bounding-box overlay rendered directly on the video stream'],
-      technical: ['Flask REST endpoint serving model predictions', 'OpenCV frame capture and preprocessing pipeline', 'TensorFlow Lite optimization for faster inference', 'React frontend handling webcam capture and overlay rendering'],
-      impact: [{ value: '87%', label: 'Detection Accuracy' }, { value: '<200ms', label: 'Inference Latency' }, { value: '35%', label: 'Faster Inference' }, { value: '2K', label: 'Training Images' }]
-    },
-    quizplatform: {
-      title: 'Quiz Platform', objective: 'Real-Time Multiplayer Quiz Application',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-      overview: 'Interactive full-stack quiz application supporting 50+ concurrent users with real-time score tracking, dynamic question rendering, and an instructor admin panel.',
-      features: ['MongoDB schema for question banks, sessions, and leaderboard data with full CRUD endpoints', 'Event-driven UI + optimistic state updates cut perceived latency 40% vs. the original Tkinter prototype', 'Admin panel for question management, cutting instructor setup time by 60%', 'Live leaderboard with real-time score sync'],
-      technical: ['React frontend with optimistic state updates', 'Node.js / Express backend with session management', 'MongoDB collections for questions, sessions, and scores'],
-      impact: [{ value: '50+', label: 'Concurrent Users' }, { value: '40%', label: 'Lower Perceived Latency' }, { value: '60%', label: 'Faster Instructor Setup' }]
-    },
-    realtimechat: {
-      title: 'Real-Time Chat Application', objective: 'Live Messaging Platform',
-      tech: ['JavaScript', 'Next.js', 'Node.js', 'WebSockets'],
-      overview: 'Live messaging platform with instant delivery, authentication, and dynamic UI updates powered by WebSockets.',
-      features: ['Real-time bidirectional messaging with persistent chat history', 'Authenticated sessions with secure login flow', 'Dynamic, reactive UI updates on new messages', 'Instant message synchronization across clients'],
-      technical: ['WebSocket-based real-time communication layer', 'Next.js App Router architecture', 'Event-driven message updates and state sync'],
-      impact: [{ value: '<1s', label: 'Message Latency' }, { value: 'Live', label: 'Real-Time Sync' }, { value: '100%', label: 'Responsive UI' }]
-    },
-    gestureverse: {
-      title: 'GestureVerse', objective: 'Gesture-Driven Interaction Engine',
-      tech: ['Python', 'MediaPipe', 'OpenCV', 'Computer Vision'],
-      overview: 'A real-time hand-gesture recognition system that translates webcam hand movements into interactive on-screen controls and visual effects, with no external hardware required.',
-      features: ['Real-time hand landmark detection via webcam', 'Custom gesture-to-action mapping engine', 'Low-latency response for smooth interaction', 'Fully browser/webcam based — no extra sensors needed'],
-      technical: ['MediaPipe hand landmark detection pipeline', 'OpenCV frame processing and normalization', 'Gesture classification and event dispatch logic'],
-      impact: [{ value: 'Real-Time', label: 'Gesture Recognition' }, { value: '0', label: 'External Hardware' }, { value: 'Multi', label: 'Gesture Mappings' }]
-    },
-    mediledger: {
-      title: 'MediLedger', objective: 'Blockchain-Based Pharma Supply Tracker',
-      tech: ['Python', 'Flask', 'Node.js', 'Solidity', 'SQL'],
-      overview: 'A blockchain-based pharmaceutical supply chain platform ensuring complete transparency and traceability from manufacturer to end consumer.',
-      features: ['Decentralized ledger for immutable drug tracking records', 'QR code-based verification for instant authenticity checks', 'Smart contract automation for supply chain transactions', 'Comprehensive audit trail for regulatory compliance'],
-      technical: ['Ethereum blockchain for decentralized data storage', 'Solidity smart contracts for automated verification', 'Flask backend API with Node.js microservices', 'SQL database for off-chain data management'],
-      impact: [{ value: '99.9%', label: 'Traceability Accuracy' }, { value: '50%', label: 'Counterfeit Risk Cut' }, { value: '3 Sec', label: 'Verification Time' }]
-    },
-    studentmanagement: {
-      title: 'Student Management System', objective: 'Academic Records & Attendance Platform',
-      tech: ['JavaScript', 'Node.js', 'MongoDB'],
-      overview: 'A web-based system for managing student records, attendance, and grades — built for academic institutions that need a lightweight, role-based administration tool.',
-      features: ['Student and faculty CRUD operations', 'Attendance tracking with daily/monthly views', 'Grade management with report generation', 'Role-based dashboards for admins, faculty, and students'],
-      technical: ['Node.js / Express REST API', 'MongoDB schema for students, courses, and grades', 'JWT-based authentication and role-based access control'],
-      impact: [{ value: '100%', label: 'Digitized Records' }, { value: 'Role-Based', label: 'Access Control' }, { value: 'Automated', label: 'Grade Reports' }]
-    },
-    tictactoeai: {
-      title: 'TicTacToe AI', objective: 'Unbeatable Minimax Game Engine',
-      tech: ['JavaScript'],
-      overview: 'A classic Tic-Tac-Toe game featuring an unbeatable AI opponent powered by the Minimax algorithm with alpha-beta pruning.',
-      features: ['Minimax AI with alpha-beta pruning for optimal moves', 'Selectable difficulty levels', 'Responsive game board with win/draw detection', 'Instant move calculation with no perceptible delay'],
-      technical: ['Pure JavaScript game logic, no external libraries', 'Recursive minimax scoring with alpha-beta pruning', 'DOM-based rendering and event handling'],
-      impact: [{ value: '0', label: 'Losses at Hard Mode' }, { value: 'Instant', label: 'Move Calculation' }, { value: '3', label: 'Difficulty Levels' }]
-    },
-    securedocverifier: {
-      title: 'SecureDoc Verifier', objective: 'AI-Powered Document Authentication',
-      tech: ['Python', 'OpenCV', 'Tesseract OCR'],
-      overview: 'A document authentication tool that detects tampered or forged documents using OCR-based text extraction and image-forensics techniques.',
-      features: ['OCR-based text extraction and validation', 'Image tampering detection using OpenCV', 'Automated fraud risk scoring', 'Verification dashboard for reviewers'],
-      technical: ['Tesseract OCR pipeline for text extraction', 'OpenCV-based image forensics for tamper detection', 'Python backend service exposing verification results'],
-      impact: [{ value: '<2 sec', label: 'Analysis Time' }, { value: 'Automated', label: 'Tamper Flagging' }, { value: 'Reduced', label: 'Manual Review Load' }]
-    },
-    resumeanalyzer: {
-      title: 'AI Resume Analyzer', objective: 'AI-Powered Resume Screening System',
-      tech: ['Python', 'NLP', 'Machine Learning'],
-      overview: 'An AI-driven resume analysis and job-matching tool that automates candidate screening by parsing resumes and job descriptions to compute match scores.',
-      features: ['Resume parsing and structured data extraction', 'Job description analysis and skill extraction', 'AI-based resume-to-job matching and scoring', 'Automated candidate ranking and skill-gap identification'],
-      technical: ['NLP-based text preprocessing and cleaning', 'Semantic and keyword matching algorithms', 'Modular Python ML pipeline design'],
-      impact: [{ value: '70%', label: 'Screening Time Cut' }, { value: '90%', label: 'Match Accuracy' }, { value: '1K+', label: 'Resumes Analyzed' }]
-    },
-    newschatbot: {
-      title: 'News ChatBot', objective: 'Conversational News Aggregator',
-      tech: ['TypeScript', 'NLP'],
-      overview: 'A conversational chatbot that aggregates, summarizes, and delivers trending news to users based on natural-language queries.',
-      features: ['Real-time news aggregation from multiple sources', 'Conversational query handling', 'Automatic topic-based summarization', 'Category-based news delivery'],
-      technical: ['TypeScript backend services', 'NLP-based summarization pipeline', 'News API integration for live articles'],
-      impact: [{ value: 'Instant', label: 'News Summaries' }, { value: 'Conversational', label: 'Query Interface' }, { value: 'Multi', label: 'Topic Categories' }]
-    },
-    quicklink: {
-      title: 'QuickLink', objective: 'Lightweight URL Shortening Service',
-      tech: ['Python'],
-      overview: 'A lightweight URL shortening service with custom aliases, fast redirects, and built-in click analytics.',
-      features: ['Custom short-link generation with aliases', 'Fast redirect handling', 'Click analytics and access tracking', 'Simple REST API for integration'],
-      technical: ['Python backend service', 'Database-backed link storage and lookups', 'Analytics tracking on every redirect'],
-      impact: [{ value: 'Fast', label: 'Redirects' }, { value: 'Simple', label: 'REST API' }, { value: 'Tracked', label: 'Click Analytics' }]
-    }
-  };
-
-  const orderedProjects = ['envirosense', 'objectdetection', 'quizplatform', 'realtimechat', 'gestureverse', 'mediledger', 'studentmanagement', 'tictactoeai', 'securedocverifier', 'resumeanalyzer', 'newschatbot', 'quicklink'];
-
-  const projectsGrid = document.getElementById('projectsGrid');
-  if (projectsGrid) {
-    orderedProjects.forEach((key) => {
-      const p = projectsData[key];
-      if (!p) return;
-      const card = document.createElement('article');
-      card.className = 'repo-card' + (p.award ? ' repo-featured' : '');
-      card.innerHTML = `
-        <div class="repo-top">
-          <div class="repo-name-row">
-            ${repoIconSvg}
-            <h3 class="repo-name">${p.title}</h3>
-            <span class="repo-visibility mono">public</span>
-          </div>
-          ${p.award ? '<span class="status-tag status-tag-award">🏆 Award Winner</span>' : ''}
-        </div>
-        <p class="repo-desc">${p.overview}</p>
-        <div class="repo-lang-row">${p.tech.map(t => `<span class="lang-dot" style="background:var(--gold)"></span>${t}`).join(' &nbsp; ')}</div>
-        <div class="repo-actions">
-          <button class="repo-btn repo-btn-primary case-btn" type="button" data-project="${key}">Open case file →</button>
-        </div>`;
-      projectsGrid.appendChild(card);
-      card.classList.add('reveal');
-    });
-
-    projectsGrid.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-project]');
-      if (btn) openProjectModal(btn.getAttribute('data-project'));
-    });
-
-    // re-observe newly added cards for reveal animation
-    const revealObserver2 = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          revealObserver2.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    projectsGrid.querySelectorAll('.repo-card').forEach(el => revealObserver2.observe(el));
-  }
-
-  window.openProjectModal = function (key) {
-    const p = projectsData[key];
-    if (!p) return;
+  window.openProjectModal = function(key){
+    const p = projectsData[key]; if(!p) return;
     document.getElementById('modalTitle').textContent = p.title;
     document.getElementById('modalSubtitle').textContent = 'Objective — ' + p.objective;
     document.getElementById('modalEyebrow').textContent = 'Case file';
-    document.getElementById('modalTechStack').innerHTML = p.tech.map(t => `<span class="modal-tag">${t}</span>`).join('');
+    document.getElementById('modalTechStack').innerHTML = p.tech.map(t=>`<span class="modal-tag">${t}</span>`).join('');
     document.getElementById('modalBody').innerHTML = `
       <div class="modal-sec"><div class="modal-sec-title">Problem &amp; Context</div><p class="modal-p">${p.overview}</p></div>
-      <div class="modal-sec"><div class="modal-sec-title">Approach &amp; Features</div><ul class="modal-list">${p.features.map(f => `<li>${f}</li>`).join('')}</ul></div>
-      <div class="modal-sec"><div class="modal-sec-title">Technology Stack &amp; Architecture</div><ul class="modal-list">${p.technical.map(t => `<li>${t}</li>`).join('')}</ul></div>
-      <div class="modal-sec"><div class="modal-sec-title">Results</div><div class="modal-stats">${p.impact.map(s => `<div class="modal-stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('')}</div></div>`;
-    document.getElementById('projectModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+      <div class="modal-sec"><div class="modal-sec-title">Approach &amp; Features</div><ul class="modal-list">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+      <div class="modal-sec"><div class="modal-sec-title">Technology Stack &amp; Architecture</div><ul class="modal-list">${p.technical.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+      <div class="modal-sec"><div class="modal-sec-title">Results</div><div class="modal-stats">${p.impact.map(s=>`<div class="modal-stat"><b>${s.value}</b><span>${s.label}</span></div>`).join('')}</div></div>`;
+    document.getElementById('projectModal').classList.add('active'); document.body.style.overflow='hidden';
   };
-  window.closeProjectModal = function () {
-    document.getElementById('projectModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  };
-  document.getElementById('projectModal').addEventListener('click', e => {
-    if (e.target.id === 'projectModal') closeProjectModal();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeProjectModal();
-  });
+  window.closeProjectModal = function(){ document.getElementById('projectModal').classList.remove('active'); document.body.style.overflow='auto'; };
+  document.getElementById('projectModal').addEventListener('click', e=>{ if(e.target.id==='projectModal') closeProjectModal(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeProjectModal(); });
 
-  /* =========================================================
-     CONTACT TERMINAL — TYPING ANIMATION (4 contact lines only)
-  ========================================================= */
-  const terminalBody = document.getElementById('terminalBody');
-  const terminalOutput = [
-    { type: 'prompt', text: 'contact' },
-    { type: 'line', text: 'Email     :  abijerey@gmail.com' },
-    { type: 'line', text: 'GitHub    :  github.com/abijerey' },
-    { type: 'line', text: 'LinkedIn  :  linkedin.com/in/abishek-jeremiah-k-298a47291' },
-    { type: 'line', text: 'Phone     :  +91-9043764123' }
+  /* ================= EXPERIENCE TIMELINE ================= */
+  const timelineData = [
+    { icon:'DEV', date:'Jun 2024 — Aug 2024', role:'Full Stack Developer Intern', company:'Internship',
+      desc:'Developed and deployed 3+ responsive web modules using React.js and Node.js/Express, cutting page load time by ~30%. Designed 10+ REST API endpoints connecting to MongoDB for real-time dashboard sync. Implemented JWT-based auth for 200+ simulated users. Wrote unit tests and ran API validation in Postman, reducing production bugs by ~25%.' },
+    { icon:'EDU', date:'2023 — 2027', role:'B.Tech — Artificial Intelligence & Data Science', company:'Sri Sairam Engineering College, Chennai',
+      desc:'Coursework spanning Data Structures, DBMS, Machine Learning, Web Technologies, and Cloud Computing. Active participant in inter-college technical symposiums and project exhibitions.' },
   ];
+  const tlList = document.getElementById('timelineList');
+  timelineData.forEach((t,i)=>{
+    const item = document.createElement('div');
+    item.className = 'tl-item' + (i===0?' open':'');
+    item.innerHTML = `
+      <div class="tl-dot"></div>
+      <div class="tl-head" data-cur>
+        <div class="tl-icon">${t.icon}</div>
+        <div class="tl-titles"><div class="tl-role">${t.role}</div><div class="tl-company">${t.company}</div></div>
+        <div class="tl-date">${t.date}</div>
+        <div class="tl-chevron">▾</div>
+      </div>
+      <div class="tl-body"><p class="tl-desc">${t.desc}</p></div>`;
+    item.querySelector('.tl-head').addEventListener('click', ()=> item.classList.toggle('open'));
+    tlList.appendChild(item);
+  });
 
-  let termStarted = false;
-  const terminalObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !termStarted) {
-        termStarted = true;
-        runTerminal();
-        terminalObserver.unobserve(entry.target);
+  /* ================= LOADER ================= */
+  (function(){
+    const steps = ['Initializing workspace…','Loading projects…','Loading experience…','Preparing interface…','Ready.'];
+    const statusEl = document.getElementById('loaderStatus');
+    const fill = document.getElementById('loaderFill');
+    const loader = document.getElementById('loader');
+    let i=0;
+    const iv = setInterval(()=>{
+      i++;
+      fill.style.width = (i/steps.length*100)+'%';
+      if(i < steps.length){ statusEl.textContent = steps[i]; }
+      else { clearInterval(iv); setTimeout(()=>loader.classList.add('done'), 350); }
+    }, 380);
+  })();
+
+  /* ================= NAV: mobile + scroll spy + progress ================= */
+  (function(){
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggle(){ hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); }
+    hamburger.addEventListener('click', toggle);
+    hamburger.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); }));
+
+    const navLinks = document.querySelectorAll('#navLinks a, #mobileMenu a');
+    const sections = ['home','profile','projects','experience','milestones','contact'];
+    const navProgress = document.getElementById('navProgress');
+    function onScroll(){
+      let current='';
+      sections.forEach(id=>{ const el=document.getElementById(id); if(el){ const r=el.getBoundingClientRect(); if(r.top<=110 && r.bottom>=110) current=id; } });
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
+      const h = document.documentElement;
+      const pct = (h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+      navProgress.style.width = pct+'%';
+    }
+    window.addEventListener('scroll', onScroll);
+    setTimeout(onScroll,150);
+  })();
+
+  /* ================= REVEAL + COUNTERS ================= */
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const cObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target; const target = parseFloat(el.getAttribute('data-target')); const isDecimal = target%1!==0;
+        let current=0; const step = target/60;
+        const tick=()=>{ current+=step; if(current<target){ el.textContent = isDecimal?current.toFixed(2):Math.ceil(current); requestAnimationFrame(tick); } else { el.textContent = isDecimal?target.toFixed(2):target; } };
+        tick(); cObserver.unobserve(el);
       }
     });
-  }, { threshold: 0.4 });
-  if (terminalBody) terminalObserver.observe(document.getElementById('contact'));
+  }, {threshold:.5});
+  document.querySelectorAll('.counter').forEach(c=>cObserver.observe(c));
 
-  function runTerminal() {
-    function typePromptLine() {
-      const promptSpan = document.createElement('div');
-      const promptLabel = document.createElement('span');
-      promptLabel.className = 'term-prompt';
-      promptLabel.textContent = 'abishek@portfolio ~ % ';
-      promptSpan.appendChild(promptLabel);
-      const typed = document.createElement('span');
-      typed.className = 'term-key';
-      promptSpan.appendChild(typed);
-      terminalBody.appendChild(promptSpan);
+  /* ================= CURSOR + MAGNETIC + TILT + BG CANVAS ================= */
+  (function(){
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if(!isTouch){
+      document.body.classList.add('has-cursor');
+      const dot=document.getElementById('curDot'), ring=document.getElementById('curRing'), label=document.getElementById('curLabel');
+      let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+      document.addEventListener('mousemove',(e)=>{ mx=e.clientX; my=e.clientY; dot.style.transform=`translate(${mx}px,${my}px)`; });
+      (function loop(){ rx+=(mx-rx)*0.16; ry+=(my-ry)*0.16; ring.style.transform=`translate(${rx}px,${ry}px)`; requestAnimationFrame(loop); })();
+      document.querySelectorAll('a,button,[data-cur]').forEach(el=>{
+        el.addEventListener('mouseenter',()=>{ const txt=el.getAttribute('data-cur-label'); if(txt){ ring.classList.add('grow'); label.textContent=txt; } else { ring.classList.add('pulse'); } });
+        el.addEventListener('mouseleave',()=>{ ring.classList.remove('grow','pulse'); label.textContent=''; });
+      });
+      document.querySelectorAll('[data-magnetic]').forEach(btn=>{
+        const inner = btn.querySelector('.btn-inner') || btn;
+        btn.addEventListener('mousemove',(e)=>{ const r=btn.getBoundingClientRect(); const relX=e.clientX-(r.left+r.width/2); const relY=e.clientY-(r.top+r.height/2); btn.style.transform=`translate(${relX*0.16}px,${relY*0.3}px)`; inner.style.transform=`translate(${relX*0.1}px,${relY*0.22}px)`; });
+        btn.addEventListener('mouseleave',()=>{ btn.style.transform='translate(0,0)'; inner.style.transform='translate(0,0)'; });
+      });
+      const frame=document.getElementById('portraitFrame');
+      if(frame){ const wrap=frame.parentElement;
+        wrap.addEventListener('mousemove',(e)=>{ const r=wrap.getBoundingClientRect(); const px=(e.clientX-r.left)/r.width-0.5; const py=(e.clientY-r.top)/r.height-0.5; frame.style.transform=`perspective(900px) rotateY(${px*7}deg) rotateX(${-py*7}deg)`; });
+        wrap.addEventListener('mouseleave',()=>{ frame.style.transform='perspective(900px) rotateY(0deg) rotateX(0deg)'; });
+      }
+    }
 
-      const word = terminalOutput[0].text;
-      let c = 0;
-      const typeChar = () => {
-        if (c < word.length) {
-          typed.textContent += word[c];
-          c++;
-          setTimeout(typeChar, 90);
-        } else {
-          setTimeout(printLines, 400);
+    // subtle drifting-node background canvas
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let w,h,points=[];
+    function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight;
+      points = Array.from({length: Math.min(46, Math.floor(w*h/38000))}, ()=>({ x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-0.5)*0.15, vy:(Math.random()-0.5)*0.15 }));
+    }
+    resize(); window.addEventListener('resize', resize);
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      points.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1; });
+      for(let i=0;i<points.length;i++){
+        for(let j=i+1;j<points.length;j++){
+          const dx=points[i].x-points[j].x, dy=points[i].y-points[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<140){ ctx.strokeStyle = `rgba(224,41,61,${(1-dist/140)*0.12})`; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(points[i].x,points[i].y); ctx.lineTo(points[j].x,points[j].y); ctx.stroke(); }
         }
-      };
-      typeChar();
+        ctx.fillStyle='rgba(140,28,51,0.35)'; ctx.beginPath(); ctx.arc(points[i].x,points[i].y,1.4,0,Math.PI*2); ctx.fill();
+      }
+      requestAnimationFrame(draw);
     }
-
-    function printLines() {
-      let i = 1;
-      const printNext = () => {
-        if (i >= terminalOutput.length) return;
-        const line = document.createElement('div');
-        line.textContent = terminalOutput[i].text;
-        line.style.opacity = '0';
-        line.style.transition = 'opacity .3s ease';
-        terminalBody.appendChild(line);
-        requestAnimationFrame(() => { line.style.opacity = '0.9'; });
-        i++;
-        setTimeout(printNext, 220);
-      };
-      printNext();
-    }
-
-    typePromptLine();
-  }
-
+    draw();
+  })();
 });
