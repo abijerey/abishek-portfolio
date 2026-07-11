@@ -70,6 +70,28 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
+   LOADER
+========================================================= */
+.loader{
+  position:fixed; inset:0; z-index:10000; background:var(--rich-black);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:22px;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+.loader.done{ opacity:0; visibility:hidden; }
+.loader-mark{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.2em;
+  color:var(--platinum); text-transform:uppercase;
+}
+.loader-status{
+  font-family:var(--font-mono); font-size:14px; color:var(--gold); min-height:20px;
+}
+.loader-bar{ width:220px; height:1px; background:var(--graphite-gray); position:relative; overflow:hidden; }
+.loader-bar i{
+  position:absolute; left:0; top:0; height:100%; width:0%;
+  background:var(--gold); transition:width .3s ease;
+}
+
+/* =========================================================
    CUSTOM CURSOR
 ========================================================= */
 .cur-dot, .cur-ring{
@@ -248,11 +270,13 @@ body:not(.has-cursor) .cur-dot, body:not(.has-cursor) .cur-ring{ display:none; }
 .social-link:hover{ color:var(--gold); border-color:var(--gold); }
 
 /* --- Hero photo frame --- */
-.hero-right{ opacity:0; animation:riseIn .8s var(--ease) .3s forwards; }
+.hero-right{ opacity:0; animation:riseIn .8s var(--ease) .3s forwards; perspective:900px; }
 .hero-photo-frame{
   position:relative; aspect-ratio:3/4; border-radius:var(--radius-md); overflow:hidden;
   background:var(--jet-black); border:1px solid var(--graphite-gray);
   box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  transition:transform .25s ease;
+  will-change:transform;
 }
 .hero-photo-frame::before{
   content:''; position:absolute; inset:0; z-index:2;
