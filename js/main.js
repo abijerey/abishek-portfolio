@@ -420,4 +420,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  /* =========================================================
+     LOADER — cycles through boot steps then fades out
+  ========================================================= */
+  (function runLoader() {
+    const steps = [
+      'Booting developer console…',
+      'Loading project archive…',
+      'Compiling stack modules…',
+      'Warming up the terminal…',
+      'Ready.'
+    ];
+    const statusEl = document.getElementById('loaderStatus');
+    const fill = document.getElementById('loaderFill');
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    let i = 0;
+    const iv = setInterval(() => {
+      i++;
+      fill.style.width = (i / steps.length * 100) + '%';
+      if (i < steps.length) {
+        statusEl.textContent = steps[i];
+      } else {
+        clearInterval(iv);
+        setTimeout(() => loader.classList.add('done'), 350);
+      }
+    }, 380);
+  })();
+
+  /* =========================================================
+     HERO PHOTO — subtle 3D tilt that follows the pointer
+     (skipped automatically on touch devices)
+  ========================================================= */
+  (function initPhotoTilt() {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) return;
+    const frame = document.getElementById('heroPhotoFrame');
+    if (!frame) return;
+    const wrap = frame.parentElement;
+    wrap.addEventListener('mousemove', (e) => {
+      const r = wrap.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      frame.style.transform = `perspective(900px) rotateY(${px * 8}deg) rotateX(${-py * 8}deg)`;
+    });
+    wrap.addEventListener('mouseleave', () => {
+      frame.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
+    });
+  })();
+
 });
