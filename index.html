@@ -1,211 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Abishek K — Full Stack Developer</title>
-<meta name="description" content="Abishek K — Full Stack Developer building production-shaped web applications with React, Node.js, MongoDB, and applied AI/ML.">
+<meta name="description" content="Abishek K — Full Stack Developer specializing in React, Node.js, MongoDB, and applied AI/ML. Building production-ready software." />
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- LOADER -->
-  <div class="loader" id="loader">
-    <div class="loader-mark">ABISHEK K</div>
-    <div class="loader-status" id="loaderStatus">Initializing workspace…</div>
-    <div class="loader-bar"><i id="loaderFill"></i></div>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">abishek<span class="dot">.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#stack" class="nav-link">Stack</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <div class="nav-progress" id="navProgress"></div>
+</nav>
 
-  <!-- CURSOR -->
-  <div class="cur-dot" id="curDot"></div>
-  <div class="cur-ring" id="curRing"><span id="curLabel"></span></div>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#stack">Stack</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact">Contact</a>
+</div>
 
-  <!-- BACKDROP -->
-  <div class="bg-grid"></div>
-  <canvas id="bgCanvas"></canvas>
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <p class="eyebrow mono">FULL STACK DEVELOPER · AI &amp; DATA SCIENCE</p>
+      <h1 class="hero-name">ABISHEK K</h1>
+      <p class="hero-role">Software Engineer — Backend &amp; AI Enthusiast</p>
+      <p class="hero-tagline">I build scalable web applications that transform ideas into production-ready software.</p>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-row">
-      <a href="#home" class="nav-mark" data-cur>ABISHEK K<span>Full Stack Developer</span></a>
-      <div class="nav-links" id="navLinks">
-        <a href="#home" data-cur>Home</a>
-        <a href="#profile" data-cur>Profile</a>
-        <a href="#projects" data-cur>Projects</a>
-        <a href="#experience" data-cur>Experience</a>
-        <a href="#milestones" data-cur>Milestones</a>
-        <a href="#contact" data-cur>Contact</a>
-      </div>
-      <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" tabindex="0"><span></span><span></span><span></span></div>
-    </div>
-    <div class="nav-progress" id="navProgress"></div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#home">Home</a><a href="#profile">Profile</a><a href="#projects">Projects</a>
-      <a href="#experience">Experience</a><a href="#milestones">Milestones</a><a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <main>
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="hero-eyebrow"><i></i> Full Stack Development</div>
-        <h1 class="hero-name">Abishek K</h1>
-        <div class="hero-roles"><b>Full Stack Developer</b><span class="sep">·</span><b>AI/ML Enthusiast</b><span class="sep">·</span><b>Problem Solver</b></div>
-        <p class="hero-tagline">Building scalable web applications that transform ideas into production-ready software.</p>
-        <div class="hero-tags">
-          <span class="htag on">Full Stack Dev</span>
-          <span class="htag on">Award Winner</span>
-          <span class="htag">AI/ML Enthusiast</span>
-          <span class="htag">📍 Chennai, India</span>
-          <span class="htag on">● Available for Full Stack Roles</span>
-        </div>
-        <div class="hero-actions">
-          <button class="btn btn-solid" data-magnetic onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"><span class="btn-inner">View Projects →</span></button>
-          <a href="#contact" class="btn btn-outline" data-magnetic><span class="btn-inner">Contact</span></a>
-        </div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
       </div>
 
-      <div class="portrait-col">
-        <svg class="portrait-bp" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="70" r="2.5" fill="#E0293D" opacity=".6"/>
-          <circle cx="340" cy="120" r="2" fill="#8C1C33" opacity=".5"/>
-          <circle cx="30" cy="380" r="2" fill="#E0293D" opacity=".5"/>
-          <circle cx="370" cy="400" r="2.5" fill="#8C1C33" opacity=".6"/>
-          <path d="M60 70 L150 40 L250 60 L340 120" stroke="#E0293D" stroke-width="1" opacity=".22" stroke-dasharray="4 5"/>
-          <path d="M30 380 L120 420 L250 400 L370 400" stroke="#8C1C33" stroke-width="1" opacity=".2" stroke-dasharray="4 5"/>
-          <path d="M60 70 L30 380" stroke="#E0293D" stroke-width="1" opacity=".15"/>
-          <path d="M340 120 L370 400" stroke="#8C1C33" stroke-width="1" opacity=".15"/>
-          <rect x="10" y="10" width="380" height="460" rx="6" stroke="#E0293D" stroke-width="0.5" opacity=".18" stroke-dasharray="2 6"/>
-        </svg>
-        <div class="portrait-frame" id="portraitFrame">
-          <span class="portrait-tag">Fig. 01 — Developer Profile</span>
-          <img src="images/abishek.png" alt="Abishek K — Full Stack Developer">
-          <div class="portrait-caption"><b>Abishek K.</b><small>Full Stack Developer · AI/ML Enthusiast</small></div>
-        </div>
+      <div class="hero-social">
+        <a href="https://github.com/abijerey" target="_blank" rel="noopener" class="social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.03c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A11.53 11.53 0 0 0 23.5 12.03C23.5 5.66 18.35.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/abishek-jeremiah-k-298a47291/" target="_blank" rel="noopener" class="social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- PROFILE -->
-  <section class="notes sec-pad" id="profile">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-eyebrow">01 — Profile</div>
-        <h2 class="sec-title">A builder's <b>working notebook</b></h2>
+    <div class="hero-right">
+      <div class="hero-photo-frame" id="heroPhotoFrame">
+        <span class="photo-tag">Fig. 01 — Developer Profile</span>
+        <img src="images/abishek.png" alt="Abishek K — Full Stack Developer" />
+        <div class="photo-caption"><b>Abishek K</b><small>Full Stack Developer · AI Enthusiast</small></div>
       </div>
-      <div class="notes-grid">
-        <div class="reveal">
-          <p class="note-p">Currently pursuing a <span class="kw">B.Tech in Artificial Intelligence and Data Science</span> at Sri Sairam Engineering College — building end-to-end web applications with React, Node.js, REST APIs, and MongoDB, and layering applied AI/ML on top.</p>
-          <div class="pull-quote">"I treat every project as software that has to hold up in production — not just look good in a demo."</div>
-          <p class="note-p">Full-stack developer with production-shaped experience across REST APIs, real-time dashboards, and applied ML — one completed internship, two award-recognized projects, and a growing archive of shipped work. Every project below started as a real problem worth solving.</p>
-          <div class="stat-row">
-            <div class="stat-item"><span class="stat-number counter" data-target="12">0</span><span class="stat-label">Projects Shipped</span></div>
-            <div class="stat-item"><span class="stat-number counter" data-target="1">0</span><span class="stat-label">Internship</span></div>
-            <div class="stat-item"><span class="stat-number counter" data-target="2">0</span><span class="stat-label">Awards Won</span></div>
-            <div class="stat-item"><span class="stat-number counter" data-target="87">0</span><span class="stat-label">% Detection Accuracy</span></div>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="domain-title">Focus Areas</div>
-          <div class="domain-grid">
-            <div class="domain-card"><div class="domain-name">Frontend Engineering</div><div class="domain-desc">React.js, responsive UI, component-driven architecture.</div></div>
-            <div class="domain-card"><div class="domain-name">Backend &amp; APIs</div><div class="domain-desc">Node.js, Express, Flask, REST API design.</div></div>
-            <div class="domain-card"><div class="domain-name">Databases</div><div class="domain-desc">MongoDB, Firebase, MySQL schema design.</div></div>
-            <div class="domain-card"><div class="domain-name">AI / ML</div><div class="domain-desc">TensorFlow, OpenCV, applied computer vision pipelines.</div></div>
-            <div class="domain-card"><div class="domain-name">IoT &amp; Embedded</div><div class="domain-desc">Arduino, GSM modules, real-time sensor integration.</div></div>
-            <div class="domain-card"><div class="domain-name">Tools &amp; DevOps</div><div class="domain-desc">Git, GitHub, Postman, CI-ready workflows.</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT ARCHIVE -->
-  <section class="sec-pad" id="projects">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-eyebrow">02 — Project Archive</div>
-        <h2 class="sec-title">Twelve shipped <b>projects</b></h2>
-      </div>
-      <div class="exp-grid" id="expGrid"></div>
-      <div class="exp-cta reveal">
-        <a href="https://github.com/abijerey" target="_blank" rel="noopener noreferrer" class="btn btn-solid" data-magnetic><span class="btn-inner">Full Repository Archive →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL -->
-  <div class="modal" id="projectModal">
-    <div class="modal-box">
-      <div class="modal-head">
-        <button class="modal-close" onclick="closeProjectModal()" data-cur data-cur-label="Close">&times;</button>
-        <div class="modal-eyebrow" id="modalEyebrow">Case file</div>
-        <h2 class="modal-title" id="modalTitle">Project Title</h2>
-        <p class="modal-sub" id="modalSubtitle">Objective</p>
-        <div class="modal-tags" id="modalTechStack"></div>
-      </div>
-      <div class="modal-body" id="modalBody"></div>
-      <div class="modal-foot"><button class="btn btn-outline" onclick="closeProjectModal()"><span class="btn-inner">Close file</span></button></div>
     </div>
   </div>
+  <div class="scroll-cue mono">scroll</div>
+</section>
 
-  <!-- EXPERIENCE -->
-  <section class="journey sec-pad" id="experience">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-eyebrow">03 — Experience</div>
-        <h2 class="sec-title">Where the <b>work happened</b></h2>
-      </div>
-      <div class="tl reveal" id="timelineList"></div>
-    </div>
-  </section>
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <p class="eyebrow mono">// about</p>
+    <h2 class="section-title">Profile</h2>
 
-  <!-- MILESTONES -->
-  <section class="sec-pad" id="milestones">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-eyebrow">04 — Milestones</div>
-        <h2 class="sec-title">Recognition &amp; <b>achievements</b></h2>
+    <div class="about-grid">
+      <div class="about-photo-card">
+        <img src="images/abishek.png" alt="Abishek K" class="about-photo" />
+        <div class="status-pill"><span class="pulse"></span> Available for opportunities</div>
       </div>
-      <div class="awards-grid reveal">
-        <div class="award-badge"><div class="award-place">1st Prize</div><div class="award-event">Project Presentation — Envirosense · CIT Symposium (2024)</div></div>
-        <div class="award-badge"><div class="award-place">3rd Prize</div><div class="award-event">Industry Emission Management Project Exhibition · Sri Sairam Engineering College (2024)</div></div>
-        <div class="award-badge"><div class="award-place">Certified</div><div class="award-event">React.js · REST API Design · MongoDB — self-paced professional modules</div></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="sec-eyebrow reveal" style="justify-content:center;">05 — Contact</div>
-      <h2 class="contact-title reveal">Let's build the next <b>project</b>, together.</h2>
-      <p class="contact-sub reveal">Open to Full Stack Development roles and collaborative engineering work.</p>
-      <div class="contact-actions reveal">
-        <a href="mailto:abijerey@gmail.com" class="btn btn-solid" data-magnetic><span class="btn-inner">Send a message</span></a>
-        <a href="tel:+919043764123" class="btn btn-outline" data-magnetic><span class="btn-inner">+91 9043764123</span></a>
-      </div>
-      <div class="social-row reveal">
-        <a href="mailto:abijerey@gmail.com" class="social-icon" title="Email">@</a>
-        <a href="https://www.linkedin.com/in/abishek-jeremiah-k-298a47291/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">in</a>
-        <a href="https://github.com/abijerey" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">gh</a>
-        <a href="tel:+919043764123" class="social-icon" title="Phone">tel</a>
+      <div class="dashboard-cards">
+        <div class="dash-card">
+          <p class="dash-label mono">SUMMARY</p>
+          <p class="dash-value-text">Full Stack Developer and B.Tech (AI &amp; Data Science) undergraduate building end-to-end web applications with React, Node.js, REST APIs, and MongoDB — integrating AI/ML capabilities into scalable, production-shaped architectures.</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">EDUCATION</p>
+          <p class="dash-value">B.Tech — Artificial Intelligence &amp; Data Science</p>
+          <p class="dash-sub">Sri Sairam Engineering College, Chennai · 2023 – 2027</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">CURRENT FOCUS</p>
+          <p class="dash-value">Full-stack systems + applied ML</p>
+          <p class="dash-sub">React/Node architectures with real-time data and model-serving APIs</p>
+        </div>
+        <div class="dash-card">
+          <p class="dash-label mono">SPECIALIZATION</p>
+          <p class="dash-value">React · Node.js · MongoDB · TensorFlow</p>
+          <p class="dash-sub">REST API design, IoT integration, real-time dashboards</p>
+        </div>
+        <div class="dash-card dash-card-wide">
+          <p class="dash-label mono">AVAILABILITY</p>
+          <div class="avail-row">
+            <span class="badge badge-green">Open to Full Stack roles</span>
+            <span class="badge badge-gold">Open to AI/ML collaboration</span>
+            <span class="badge badge-outline">Chennai, India</span>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-  </main>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="wrap footer-row">
-      <div class="footer-loop"><b>Build.</b> Ship. Iterate.</div>
-      <div class="footer-copy">© 2026 Abishek K — Chennai, India</div>
+<!-- ================= STATS ================= -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num" data-target="12">0</span>
+      <span class="stat-label mono">Projects Shipped</span>
     </div>
-  </footer>
+    <div class="stat-item">
+      <span class="stat-num" data-target="1">0</span>
+      <span class="stat-label mono">Internship</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="2">0</span>
+      <span class="stat-label mono">Awards Won</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="6">0</span>
+      <span class="stat-label mono">Endpoints Built (Envirosense)</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="87">0</span>
+      <span class="stat-label mono">% Detection Accuracy</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TECH STACK ================= -->
+<section class="section" id="stack">
+  <div class="section-inner">
+    <p class="eyebrow mono">// stack</p>
+    <h2 class="section-title">Tech Stack</h2>
+
+    <div class="stack-grid">
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Frontend</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">React.js</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">JavaScript (ES6+)</span>
+          <span class="skill-pill">Responsive UI</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Backend</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Express.js</span>
+          <span class="skill-pill">REST API Design</span>
+          <span class="skill-pill">Python (Flask)</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Database</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">Firebase</span>
+          <span class="skill-pill">MySQL</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">AI / ML</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">OpenCV</span>
+          <span class="skill-pill">Machine Learning</span>
+          <span class="skill-pill">Data Augmentation</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">IoT</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Arduino</span>
+          <span class="skill-pill">Blynk IoT</span>
+          <span class="skill-pill">Embedded Systems</span>
+          <span class="skill-pill">GSM Modules</span>
+        </div>
+      </div>
+      <div class="stack-cat">
+        <h3 class="stack-cat-title mono">Tools &amp; DevOps</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">Postman</span>
+          <span class="skill-pill">Tkinter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <p class="eyebrow mono">// project archive</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-sub">Twelve shipped builds — click any card to open the full case file.</p>
+
+    <div class="repo-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= PROJECT MODAL ================= -->
+<div class="modal" id="projectModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+      <div class="modal-eyebrow" id="modalEyebrow">Case file</div>
+      <h2 class="modal-title" id="modalTitle">Project Title</h2>
+      <p class="modal-sub" id="modalSubtitle">Objective</p>
+      <div class="modal-tags" id="modalTechStack"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><button class="btn btn-secondary" onclick="closeProjectModal()">Close file</button></div>
+  </div>
+</div>
+
+<!-- ================= EXPERIENCE (git commit timeline) ================= -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <p class="eyebrow mono">// git log --oneline</p>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="commit-timeline">
+      <div class="commit-node">
+        <div class="commit-graph"><span class="commit-dot"></span><span class="commit-line"></span></div>
+        <div class="commit-content">
+          <p class="commit-hash mono">commit a1f9c2e</p>
+          <h3 class="commit-title">Full Stack Developer Intern</h3>
+          <p class="commit-meta mono">Jun 2024 – Aug 2024</p>
+          <ul class="commit-body">
+            <li>Developed and deployed 3+ responsive web modules using React.js and Node.js/Express, cutting page load time by ~30% through code splitting and lazy loading</li>
+            <li>Designed and integrated 10+ REST API endpoints connecting the frontend to a MongoDB backend for real-time dashboard sync</li>
+            <li>Implemented JWT-based auth and role-based access control, securing data access for 200+ simulated users</li>
+            <li>Collaborated in a 4-member agile team — daily stand-ups, biweekly sprint reviews</li>
+            <li>Wrote unit tests and ran API validation in Postman, reducing production bugs by ~25%</li>
+          </ul>
+          <div class="commit-tags">
+            <span class="commit-tag">React.js</span>
+            <span class="commit-tag">Node.js</span>
+            <span class="commit-tag">Express</span>
+            <span class="commit-tag">MongoDB</span>
+            <span class="commit-tag">JWT</span>
+            <span class="commit-tag">Postman</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section class="section" id="education">
+  <div class="section-inner">
+    <p class="eyebrow mono">// education</p>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-card">
+      <div class="edu-main">
+        <h3 class="edu-degree">B.Tech — Artificial Intelligence &amp; Data Science</h3>
+        <p class="edu-college">Sri Sairam Engineering College, Chennai</p>
+      </div>
+      <div class="edu-duration mono">2023 — 2027</div>
+      <div class="edu-details">
+        <div class="edu-block">
+          <p class="dash-label mono">COURSEWORK</p>
+          <div class="skill-pills">
+            <span class="skill-pill">Data Structures</span>
+            <span class="skill-pill">DBMS</span>
+            <span class="skill-pill">Machine Learning</span>
+            <span class="skill-pill">Web Technologies</span>
+            <span class="skill-pill">Cloud Computing</span>
+          </div>
+        </div>
+        <div class="edu-block">
+          <p class="dash-label mono">ACTIVITIES</p>
+          <p class="dash-value-text">Active participant in inter-college technical symposiums and project exhibitions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section class="section" id="achievements">
+  <div class="section-inner">
+    <p class="eyebrow mono">// achievements</p>
+    <h2 class="section-title">Achievements &amp; Certifications</h2>
+
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <h3 class="award-title">1st Prize — Project Presentation</h3>
+        <p class="award-sub">Envirosense · CIT Symposium (2024)</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <h3 class="award-title">3rd Prize (Overall)</h3>
+        <p class="award-sub">Industry Emission Management Project Exhibition · Sri Sairam Engineering College (2024)</p>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">📜</div>
+        <h3 class="award-title">Certifications</h3>
+        <p class="award-sub">React.js · REST API Design · MongoDB — self-paced professional modules</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT (terminal) ================= -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <p class="eyebrow mono">// contact</p>
+    <h2 class="section-title">Let's build something</h2>
+    <p class="section-sub">Open to Full Stack Development roles and collaborative engineering work.</p>
+
+    <div class="terminal-window">
+      <div class="editor-titlebar">
+        <span class="dot-group"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></span>
+        <span class="editor-filename mono">abishek@portfolio:~</span>
+      </div>
+      <div class="terminal-body mono" id="terminalBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-status">
+      <span class="badge badge-green"><span class="pulse"></span> Available for Full Stack Development Roles</span>
+      <span class="badge badge-gold">Building Production Applications</span>
+      <span class="badge badge-outline">Open to Collaboration</span>
+    </div>
+    <p class="footer-copy mono">© 2026 Abishek K — Chennai, India</p>
+  </div>
+</footer>
 
 <script src="js/main.js"></script>
 </body>
